@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Table } from "react-bootstrap";
-import FormTable from "./components/FormTable";
+import OffsetCalc from "./components/OffsetCalc";
 function App() {
   return (
     <div className="container">
-      <FormTable />
+      <OffsetCalc />
     </div>
   );
 }
