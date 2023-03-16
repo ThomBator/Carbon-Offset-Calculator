@@ -111,8 +111,7 @@ const OffsetCalc = ({ handlePost }) => {
           </select>
 
           <p className="fs-4 mt-0">
-            Avg. {currentCountry.carbon}
-            metric tons of CO2 per person per year.
+            Avg. {currentCountry.carbon} metric tons of CO2 per person per year.
           </p>
           <hr />
         </div>
