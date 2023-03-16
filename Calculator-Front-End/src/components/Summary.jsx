@@ -29,7 +29,8 @@ const Summary = ({ results }) => {
         {!results.isCarbonNeutral && (
           <>
             <p className="fs-5">
-              Your current purchases are not enough to reach carbon neutrality.
+              Your current purchases are not enough to reach carbon neutrality
+              in {results.countryName}.
             </p>
             <p className="fs-5">
               With your current purchases you will be offsetting{" "}
@@ -63,7 +64,7 @@ const Summary = ({ results }) => {
         )}
         <p className="fs-5">
           Your maximum carbon offset is{" "}
-          <strong>{results.maxOffset} kg per year</strong>
+          <strong>{results.maxOffset} kg per year.</strong>
         </p>
         <hr />
       </div>
