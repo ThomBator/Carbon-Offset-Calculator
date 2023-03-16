@@ -11,9 +11,9 @@ router.use(bodyParser.json());
 //@description post form data and return graph data
 //@access Public
 router.post("/", async (req, res) => {
-  offsetCalculator(req.body);
+  const offsetSimulationResults = offsetCalculator(req.body);
 
-  res.json(req.body);
+  res.json(offsetSimulationResults);
 });
 
 //helper functions for calculations
