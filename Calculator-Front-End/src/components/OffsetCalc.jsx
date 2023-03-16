@@ -3,13 +3,14 @@ import { Table } from "react-bootstrap";
 import { FaTrashAlt } from "react-icons/fa";
 import { set, useFieldArray, useForm, useWatch } from "react-hook-form";
 
-const OffsetCalc = () => {
+const OffsetCalc = ({ handlePost }) => {
   //Data for from dropdowns
   const [years, setYears] = useState([
     2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033,
   ]);
 
   const countries = [
+    { name: "Global", carbon: 4.69 },
     { name: "United States", carbon: 15.52 },
     { name: "United Kingdom", carbon: 5.55 },
     { name: "Gemany", carbon: 9.44 },
@@ -18,10 +19,8 @@ const OffsetCalc = () => {
     { name: "China", carbon: 7.38 },
     { name: "Singapore", carbon: 8.56 },
     { name: "Australia", carbon: 17.1 },
-    { name: "Other", carbon: 4.69 },
   ];
-  //Will just use US As default country for now
-  //Will aim to adjust to be neutral on future versions
+
   const [currentCountry, setCurrentCountry] = useState(countries[0]);
 
   const changeCountry = (event) => {
@@ -29,7 +28,6 @@ const OffsetCalc = () => {
       (country) => country.name === event.target.value
     );
     setCurrentCountry(newCountry[0]);
-    console.log(currentCountry);
   };
 
   //This function validates that each year is only used once
@@ -65,12 +63,20 @@ const OffsetCalc = () => {
 
   const [error, setError] = useState(null);
 
+  const handleForm = (data, event) => {
+    event.preventDefault();
+    const formObj = {
+      country: currentCountry,
+      purchase: data.purchase,
+    };
+    handlePost(formObj);
+    setError(null);
+  };
+
   const formError = (error, event) => {
     console.log("Error", error);
     setError(error);
   };
-
-  const handleForm = (data, event) => console.log("Success", data);
 
   return (
     <div
@@ -93,19 +99,20 @@ const OffsetCalc = () => {
             </label>
           </div>
           <select
-            {...register("purchase.countries")}
             className=" mb-4 px-1"
             onChange={changeCountry}
             value={currentCountry.name}
           >
-            {countries.map((country) => (
-              <option value={country.name}>{country.name}</option>
+            {countries.map((country, index) => (
+              <option key={index} value={country.name}>
+                {country.name}
+              </option>
             ))}
           </select>
 
           <p className="fs-4 mt-0">
             Avg. {currentCountry.carbon}
-            kg of CO2 per person per year.
+            metric tons of CO2 per person per year.
           </p>
           <hr />
         </div>
@@ -204,7 +211,7 @@ const getTotal = (rows) => {
   for (const row of rows) {
     total = total + (Number.isNaN(row.trees) ? 0 : Number(row.trees));
   }
-  return total;
+  return total.toString();
 };
 
 const TotalTrees = ({ control }) => {
