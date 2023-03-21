@@ -12,12 +12,12 @@ const offsetCalculator = (data) => {
   //Plan is to start at 4.75 in year 1 (i.e. 1 year after purchase).
   //Then will increment by 4.75 until trees are mature
   sortedPurchases.forEach((purchase) => (purchase.offset = 4.75));
-  console.log(sortedPurchases);
+
   //Increments current year being simulated
   let currentYear = Number(sortedPurchases[0].year);
-  console.log("current year", currentYear);
+
   //Keeps count of total years to neutrality
-  let years = 1;
+  let years = 0;
   let yearlyOffset = 0;
   let isCarbonNeutral = false;
   const offsetsByYear = [];
@@ -43,15 +43,6 @@ const offsetCalculator = (data) => {
 
     if (yearlyOffset >= yearlyCarbon) {
       isCarbonNeutral = true;
-    }
-    //If all trees are mature and all years have been added you have reached the max offset for your purchases
-    if (allTreesMature) {
-      if (
-        currentYear ===
-        sortedPurchases[sortedPurchases.length - 1].year + 6
-      ) {
-        break;
-      }
     }
 
     currentYear += 1;

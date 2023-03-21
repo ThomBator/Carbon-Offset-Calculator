@@ -13,6 +13,7 @@ const Summary = ({ results }) => {
 
   const percentOffset = (results.maxOffset / results.targetOffset) * 100;
   const percentTwoDecimals = percentOffset.toFixed(2);
+  const maxOffsetTons = (results.maxOffset / 1000).toFixed(2);
 
   return (
     <div
@@ -50,9 +51,8 @@ const Summary = ({ results }) => {
             <p className="fs-5"> Congratulations!</p>
             <p className="fs-5">
               With your current purchases you will achieve carbon neutrality
-              after
-              <strong>{results.yearsToNeutral} years</strong> investment in{" "}
-              {results.maxOffsetYear}!!
+              after <strong>{results.yearsToNeutral} years</strong> investment
+              in {results.maxOffsetYear}!!
             </p>
 
             <p className="fs-5">
@@ -64,7 +64,7 @@ const Summary = ({ results }) => {
         )}
         <p className="fs-5">
           Your maximum carbon offset is{" "}
-          <strong>{results.maxOffset} kg per year.</strong>
+          <strong>{maxOffsetTons} tons per year.</strong>
         </p>
         <hr />
       </div>
