@@ -18,7 +18,7 @@ function App() {
   };
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex flex-column flex-md-row justify-content-center gap-5 mx-5 ">
       <OffsetCalc handlePost={handlePost} />
       {results && <Summary results={results} />}
     </div>

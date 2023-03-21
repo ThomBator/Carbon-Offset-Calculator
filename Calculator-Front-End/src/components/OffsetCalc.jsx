@@ -79,10 +79,7 @@ const OffsetCalc = ({ handlePost }) => {
   };
 
   return (
-    <div
-      className="m-auto my-5 bg-light p-5 rounded"
-      style={{ maxWidth: "600px" }}
-    >
+    <div className="my-5 bg-light p-5 rounded" style={{ maxWidth: "600px" }}>
       <div className="mb-3">
         <h2 className="display-6 mb-2">Carbon Offset Simulator</h2>
         <p className="fs-5 mb-5 text-muted">

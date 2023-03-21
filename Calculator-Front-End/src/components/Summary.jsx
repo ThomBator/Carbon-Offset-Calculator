@@ -4,10 +4,13 @@ const Summary = ({ results }) => {
      maxOffset,
     offsetsByYear,
     maxOffsetYear,
-    yearsToNeutral,
+    yearsInvested,
     isCarbonNeutral,
     targetOffset,
     countryName,
+    totalExpenditure,
+    expendituresByYear, 
+    totalTrees
     
     */
 
@@ -17,7 +20,7 @@ const Summary = ({ results }) => {
 
   return (
     <div
-      className="m-auto my-5 bg-light p-5 rounded flex-grow-1"
+      className="my-5 bg-light p-5 rounded flex-grow-1"
       style={{ maxWidth: "600px" }}
     >
       <h2 className="display-6 mb-2">Simulation Results</h2>
@@ -35,11 +38,11 @@ const Summary = ({ results }) => {
             </p>
             <p className="fs-5">
               With your current purchases you will be offsetting{" "}
-              <strong>{percentTwoDecimals}% </strong>of your annutal carbon
+              <strong>{percentTwoDecimals}% </strong>of your annual carbon
               consumption after{" "}
               <strong>
                 {" "}
-                {results.yearsToNeutral} years investment in{" "}
+                {results.yearsInvested} years investment in{" "}
                 {results.maxOffsetYear}.
               </strong>
             </p>
@@ -51,8 +54,8 @@ const Summary = ({ results }) => {
             <p className="fs-5"> Congratulations!</p>
             <p className="fs-5">
               With your current purchases you will achieve carbon neutrality
-              after <strong>{results.yearsToNeutral} years</strong> investment
-              in {results.maxOffsetYear}!!
+              after <strong>{results.yearsInvested} years</strong> investment in{" "}
+              {results.maxOffsetYear}!!
             </p>
 
             <p className="fs-5">
@@ -65,6 +68,28 @@ const Summary = ({ results }) => {
         <p className="fs-5">
           Your maximum carbon offset is{" "}
           <strong>{maxOffsetTons} tons per year.</strong>
+        </p>
+
+        <p className="fs-5">
+          Your estimated total expenditure is{" "}
+          <strong>
+            ${results.totalExpenditure.toLocaleString("en-US")} USD after{" "}
+            {results.yearsInvested} years.{" "}
+          </strong>
+        </p>
+        <p className="fs-5">
+          {" "}
+          The above figure incldues{" "}
+          <strong>
+            $
+            {results.expendituresByYear[
+              results.expendituresByYear.length - 1
+            ].yearlyTotal.toLocaleString("en-US")}{" "}
+            USD
+          </strong>{" "}
+          annual maintenance costs for each year over your initial investment
+          period. That annual fee will have to be paid for as long as you wish
+          to continue caring for your trees.
         </p>
         <hr />
       </div>
