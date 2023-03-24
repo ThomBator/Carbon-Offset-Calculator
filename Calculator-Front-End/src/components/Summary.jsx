@@ -1,4 +1,4 @@
-const Summary = ({ results }) => {
+const Summary = ({ results, reset }) => {
   /*
     Results Object keys 
      maxOffset,
@@ -20,7 +20,7 @@ const Summary = ({ results }) => {
 
   return (
     <div
-      className="my-5 bg-light p-5 rounded flex-grow-1"
+      className="my-5 bg-light p-5 rounded flex-grow-1 shadow"
       style={{ maxWidth: "600px" }}
     >
       <h2 className="display-6 mb-2">Simulation Results</h2>
@@ -92,6 +92,9 @@ const Summary = ({ results }) => {
           to continue caring for your trees.
         </p>
         <hr />
+        <button type="button" onClick={reset} className="btn btn-secondary">
+          Reset Calculator
+        </button>
       </div>
     </div>
   );
