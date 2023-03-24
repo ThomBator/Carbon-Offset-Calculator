@@ -8,9 +8,7 @@ Welcome to my Carbon Offset Calculator app! It is still a work in progress, so I
 2. run npm install
 3. run npm run dev
 
-At current time the backend is still a work in progress. I am passing data successfully from the client-side to my rest API, then sending it off to my offsetCalculator function.
-
-I think I have most of the logic for the offsetCalculator ironed out. I still need to implement the expenditure calculator.
+I believe my backend is mostly completed and functioning well now.
 
 ## To run the front-end of this app:
 
@@ -19,4 +17,8 @@ I think I have most of the logic for the offsetCalculator ironed out. I still ne
 3. run npm run dev
 4. Fill out form and submit
 
-Note that the front-end will not work without the backend dev server already running. I was unfamilliar with the react-hook-forms library, and getting form validation and dynamic rendering done right took me longer than I would have liked. Seems like a great library though so was happy to dive into the documentation and figure out how it all worked.
+A few notes about choices made on the front end:
+
+1. I chose to only allow users to simulate yearly tree purchases. I made this choice given the limit of 55 trees per year and the multi-year timescales requireed for the simulation. I felt giving a monthly level of granularity would add unecessary clutter to the UI and would not offer much more valuable insights to the user for simulation purposes.
+
+2. For my expenditures graph, I chose to graph annual expenditures instead of cumulative expendatures. My reasoning here was that the cumulative expendatures are actually super high to achieve carbon neutrality. My background in marketing taught me it is best to position pricing to seem as minimal as possible while still being accurate. The yearly expenditures are still considerable, but seem much more manageable than the cumulative amount.
